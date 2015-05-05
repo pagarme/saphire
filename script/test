@@ -1,0 +1,4 @@
+#!/bin/bash
+
+node --harmony-proxies node_modules/.bin/istanbul cover -x runtime.js _mocha -- -R spec --recursive
+
