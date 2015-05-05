@@ -1,4 +1,4 @@
-# Saphire [![Build Status](https://travis-ci.org/pagarme/saphire.svg)](https://travis-ci.org/pagarme/saphire)
+# Saphire [![Build Status](https://travis-ci.org/pagarme/saphire.svg)](https://travis-ci.org/pagarme/saphire) [![Coverage Status](https://coveralls.io/repos/pagarme/saphire/badge.png)](https://coveralls.io/r/pagarme/saphire)
 
 > Ruby inspired type system for JavaScript.
 
