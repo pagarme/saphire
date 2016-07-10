@@ -8,25 +8,26 @@ using v8::Object;
 using v8::String;
 using v8::FunctionTemplate;
 
-NAN_METHOD(Stub) {
-	Handle<Value>* argv = new Handle<Value>[args.Length()];
+void Stub(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+	Handle<Value>* argv = new Handle<Value>[info.Length()];
 
-	for (int i = 0; i < args.Length(); i++)
-		argv[i] = args[i];
+	for (int i = 0; i < info.Length(); i++)
+		argv[i] = info[i];
 
-	NanReturnValue(NanMakeCallback(args.This(), args.Callee(), args.Length(), argv));
+	info.GetReturnValue().Set(Nan::MakeCallback(info.This(), info.Callee(), info.Length(), argv));
 
 	delete[] argv;
-};
+}
 
-NAN_METHOD(CreateStubFunction) {
-	NanScope();
-	NanReturnValue(NanNew<FunctionTemplate>(Stub)->GetFunction());
-};
+void CreateStubFunction(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+	Nan::HandleScope scope;
+
+	info.GetReturnValue().Set(Nan::GetFunction(Nan::New<FunctionTemplate>(Stub)).ToLocalChecked());
+}
 
 void Init(Handle<Object> target) {
-	target->Set(NanNew<String>("createStubFunction"), NanNew<FunctionTemplate>(CreateStubFunction)->GetFunction());
-};
+	target->Set(Nan::New<String>("createStubFunction").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(CreateStubFunction)).ToLocalChecked());
+}
 
 NODE_MODULE(saphire, Init);
 
