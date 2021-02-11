@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/greenboxal/saphire",
   "dependencies": {
-    "setflags": "0.0.2",
     "v8-callsites": "^1.1.0"
   },
   "devDependencies": {
