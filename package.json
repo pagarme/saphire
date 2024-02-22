@@ -4,7 +4,6 @@
   "description": "Ruby type system for JavaScript",
   "main": "lib/index.js",
   "scripts": {
-    "test": "script/test"
   },
   "repository": {
     "type": "git",
